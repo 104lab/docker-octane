@@ -1,0 +1,38 @@
+name: Publish Docker
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+  schedule:
+    - cron: '0 10 * * 1' # Weekly on Monday at 10:00
+
+jobs:
+  php81:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Build latest version and publish to GitHub Registry
+        uses: elgohr/Publish-Docker-Github-Action@v4
+        with:
+          name: 104lab/octane
+          tags: "latest,8.1"
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: ghcr.io
+          dockerfile: 8.1/Dockerfile
+
+  php80:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Build PHP 8.0 version and publish to GitHub Registry
+        uses: elgohr/Publish-Docker-Github-Action@v4
+        with:
+          name: 104lab/octane
+          tags: "8.0"
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: ghcr.io
+          dockerfile: 8.0/Dockerfile
