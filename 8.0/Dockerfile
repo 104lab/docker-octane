@@ -23,7 +23,7 @@ RUN set -xe && \
                 pdo_sqlite \
         && \
             pecl install \
-                swoole \
+                swoole-4.8.10 \
         && \
             docker-php-ext-enable \
                 swoole \

@@ -29,7 +29,7 @@ RUN set -xe && \
                 make \
         && \
             pecl install \
-                swoole \
+                swoole-4.8.10 \
         && \
             docker-php-ext-enable \
                 swoole \
