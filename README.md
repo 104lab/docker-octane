@@ -1,6 +1,6 @@
 # Dockerized Octane image
 
-The base image for [Laravel Octane](https://laravel.com/docs/8.x/octane) with [Swoole](https://pecl.php.net/package/swoole) extension.
+The base image for [Laravel Octane](https://laravel.com/docs/8.x/octane) with [OpenSwoole](https://pecl.php.net/package/openswoole) extension.
 
 ## Pull image and run container!
 

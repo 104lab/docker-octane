@@ -23,10 +23,10 @@ RUN set -xe && \
                 pdo_sqlite \
         && \
             pecl install \
-                swoole-4.8.10 \
+                openswoole-4.11.1 \
         && \
             docker-php-ext-enable \
-                swoole \
+                openswoole \
         && \
             apt-get remove --purge -y ${BUILD_DEPS} && \
             apt-get autoremove --purge -y && \

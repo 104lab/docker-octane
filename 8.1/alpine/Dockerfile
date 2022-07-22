@@ -29,10 +29,10 @@ RUN set -xe && \
                 make \
         && \
             pecl install \
-                swoole-4.8.10 \
+                openswoole-4.11.1 \
         && \
             docker-php-ext-enable \
-                swoole \
+                openswoole \
         && \
             apk del .build-deps && \
             apk del ${BUILD_DEPS} && \
