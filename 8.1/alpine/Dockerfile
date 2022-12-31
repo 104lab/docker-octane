@@ -29,7 +29,7 @@ RUN set -xe && \
                 make \
         && \
             pecl install \
-                openswoole-4.11.1 \
+                openswoole-4.12.1 \
         && \
             docker-php-ext-enable \
                 openswoole \

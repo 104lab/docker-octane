@@ -1,4 +1,4 @@
-FROM php:8.1
+FROM php:8.2
 
 LABEL org.opencontainers.image.source="https://github.com/104lab/docker-octane" \
     repository="https://github.com/104lab/docker-octane"

@@ -1,4 +1,4 @@
-FROM php:8.1
+FROM php:8.2-alpine
 
 LABEL org.opencontainers.image.source="https://github.com/104lab/docker-octane" \
     repository="https://github.com/104lab/docker-octane"
@@ -6,14 +6,15 @@ LABEL org.opencontainers.image.source="https://github.com/104lab/docker-octane" 
 # Set build deps
 ENV BUILD_DEPS \
         libpq-dev \
-        libsqlite3-dev
+        sqlite-dev
 
-# See https://laravel.com/docs/8.x/deployment#server-requirements
+# See https://laravel.com/docs/9.x/deployment#server-requirements
 # See https://pecl.php.net/package/swoole
 RUN set -xe && \
-            apt-get update && \
-            apt-get install --yes --no-install-recommends --no-install-suggests \
-                libpq5 \
+            apk add --no-cache \
+                libpq \
+                libstdc++ \
+                sqlite \
                 ${BUILD_DEPS} \
         && \
             docker-php-ext-install \
@@ -22,13 +23,17 @@ RUN set -xe && \
                 pdo_pgsql \
                 pdo_sqlite \
         && \
+            apk add --no-cache --virtual .build-deps \
+                autoconf \
+                g++ \
+                make \
+        && \
             pecl install \
                 openswoole-4.12.1 \
         && \
             docker-php-ext-enable \
                 openswoole \
         && \
-            apt-get remove --purge -y ${BUILD_DEPS} && \
-            apt-get autoremove --purge -y && \
-            rm -r /var/lib/apt/lists/* && \
+            apk del .build-deps && \
+            apk del ${BUILD_DEPS} && \
             php -m
