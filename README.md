@@ -1,13 +1,13 @@
 # Dockerized Octane image
 
-The base image for [Laravel Octane](https://laravel.com/docs/8.x/octane) with [OpenSwoole](https://pecl.php.net/package/openswoole) extension.
+The base image for [Laravel Octane](https://laravel.com/docs/11.x/octane) with [OpenSwoole](https://pecl.php.net/package/openswoole) extension.
 
 ## Pull image and run container!
 
 Pull image
 
 ```bash
-docker pull ghcr.io/104lab/octane:8.0
+docker pull ghcr.io/104lab/octane:8.3
 ```
 
 Run container example:
